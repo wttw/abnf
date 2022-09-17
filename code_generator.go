@@ -212,7 +212,9 @@ func (name RuleNameOperator) generate(g *CodeGenerator) {
 			g.w("()")
 		}
 	} else {
-		g.w(formatRuleName(g.syn(name.key)))
+		// fix stackoverflow error https://github.com/elimity-com/abnf/issues/11
+		g.syn(name.key) // remove synomym appended in r.generate() method
+		g.w(formatRuleName(name.key))
 		if g.isOperator {
 			g.w("()")
 		}
