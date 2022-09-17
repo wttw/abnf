@@ -4,11 +4,12 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"gopkg.in/yaml.v2"
 	"io"
 	"log"
 	"os"
 	"path/filepath"
+
+	"gopkg.in/yaml.v2"
 )
 
 var errMissingVersion = errors.New("no version number")
@@ -48,6 +49,12 @@ type Config struct {
 	GoFileName  string `json:"gofile" yaml:"gofile"`
 	OutputPath  string `json:"output" yaml:"output"`
 	VerboseFlag bool   `json:"verbose" yaml:"verbose"`
+	External    []struct {
+		Rules     []string `json:"rules" yaml:"rules"`
+		Operators bool     `json:"operators" yaml:"operators"`
+		Name      string   `json:"name" yaml:"name"`
+		Path      string   `json:"path" yaml:"path"`
+	} `json:"external" yaml:"external"`
 }
 
 type versionSetting struct {

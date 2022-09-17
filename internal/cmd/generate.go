@@ -29,6 +29,18 @@ func Generate(dir, filename string, stderr io.Writer) error {
 		PackageName: configuration.PackageName,
 		RawABNF:     rawABNF,
 	}
+	if len(configuration.External) > 0 {
+		g.ExternalABNF = make(map[string]abnf.ExternalABNF)
+		for _, external := range configuration.External {
+			for _, rule := range external.Rules {
+				g.ExternalABNF[rule] = abnf.ExternalABNF{
+					IsOperator: external.Operators,
+					PackageName: external.Name,
+					PackagePath: external.Path,
+				}
+			}
+		}
+	}
 	buf := new(bytes.Buffer)
 
 	if configuration.Generation == "alternatives" {
