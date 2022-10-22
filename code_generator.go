@@ -207,7 +207,7 @@ func (rep RepetitionOperator) generate(g *CodeGenerator) {
 
 func (name RuleNameOperator) generate(g *CodeGenerator) {
 	if external, ok := g.ExternalABNF[name.key]; ok {
-		g.wf("%s.%s", external.PackageName, name.key)
+		g.wf("%s.%s", external.PackageName, formatRuleName(name.key))
 		if external.IsOperator {
 			g.w("()")
 		}
