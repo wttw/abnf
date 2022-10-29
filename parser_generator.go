@@ -1,9 +1,10 @@
 package abnf
 
 import (
+	"sync"
+
 	"github.com/elimity-com/abnf/encoding"
 	"github.com/elimity-com/abnf/operators"
-	"sync"
 )
 
 type ParserGenerator struct {
@@ -40,6 +41,8 @@ func (g *ParserGenerator) GenerateABNFAsOperators() map[string]operators.Operato
 		}(name, rule)
 	}
 	g.Wait()
+	g.internalABNFMutex.RLock()
+	defer g.internalABNFMutex.RUnlock()
 	return g.internalABNF
 }
 
@@ -102,6 +105,8 @@ func (name RuleNameOperator) toFunc(g *ParserGenerator) operators.Operator {
 		}
 	}()
 	wg.Wait()
+	g.internalABNFMutex.RLock()
+	defer g.internalABNFMutex.RUnlock()
 	return g.internalABNF[name.key]
 }
 

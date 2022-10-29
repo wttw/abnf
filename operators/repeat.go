@@ -18,11 +18,10 @@ func Repeat(key string, min, max int, r Operator) Operator {
 			if i < min {
 				return nodes
 			}
-			node := Node{
+			return append(nodes, &Node{
 				Key:   key,
 				Value: s[:l],
-			}
-			return append(nodes, &node)
+			})
 		}
 		return repeat(0, 0)
 	}
@@ -33,12 +32,12 @@ func RepeatN(key string, n int, r Operator) Operator {
 	return Repeat(key, n, n, r)
 }
 
-// Repeat1Inf defines a specific repetition from 0 to infinity.
+// Repeat0Inf defines a specific repetition from 0 to infinity.
 func Repeat0Inf(key string, r Operator) Operator {
 	return Repeat(key, 0, -1, r)
 }
 
-// Repeat0Inf defines a specific repetition from 1 to infinity.
+// Repeat1Inf defines a specific repetition from 1 to infinity.
 func Repeat1Inf(key string, r Operator) Operator {
 	return Repeat(key, 1, -1, r)
 }

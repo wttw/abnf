@@ -309,40 +309,6 @@ func TestNode(t *testing.T) {
 						},
 					},
 				},
-				{
-					Key:   "cr",
-					Value: []byte("a"),
-					Children: Children{
-						{
-							Key:   "r0i1",
-							Value: []byte(""),
-						},
-						{
-							Key:   "r0i2",
-							Value: []byte("a"),
-							Children: Children{
-								{
-									Key:   "a",
-									Value: []byte("a"),
-								},
-							},
-						},
-					},
-				},
-				{
-					Key:   "cr",
-					Value: []byte(""),
-					Children: Children{
-						{
-							Key:   "r0i1",
-							Value: []byte(""),
-						},
-						{
-							Key:   "r0i2",
-							Value: []byte(""),
-						},
-					},
-				},
 			},
 		},
 		{

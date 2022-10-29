@@ -85,12 +85,12 @@ func (n *Node) GetSubNode(key string) *Node {
 	return n.Children.Get(key, true)
 }
 
-// GetSubNode searches ALL the children of the node for the given key and returns all matching children.
+// GetSubNodes searches ALL the children of the node for the given key and returns all matching children.
 func (n *Node) GetSubNodes(key string) Children {
 	return n.Children.GetAll(key)
 }
 
-// GetSubNode searches ALL the children of the node for the given key and returns that child without passing a stop-key.
+// GetSubNodesBefore searches ALL the children of the node for the given key and returns that child without passing a stop-key.
 func (n *Node) GetSubNodesBefore(key string, stop ...string) Children {
 	return n.Children.GetAllBefore(key, stop...)
 }
@@ -136,7 +136,7 @@ func (c Children) GetAll(key string) Children {
 	return nodes
 }
 
-// GetSubNode returns ALL the children matching the given key without passing a stop-key.
+// GetAllBefore returns ALL the children matching the given key without passing a stop-key.
 func (c Children) GetAllBefore(key string, before ...string) Children {
 	var nodes Children
 	for _, child := range c {
@@ -160,7 +160,11 @@ type Alternatives []*Node
 // Best returns the node with the best (longest) value.
 func (as Alternatives) Best() *Node {
 	best := &Node{}
-	for _, a := range as {
+	if len(as) == 0 {
+		return best
+	}
+	best = as[0]
+	for _, a := range as[1:] {
 		if len(a.Value) > len(best.Value) {
 			best = a
 		}

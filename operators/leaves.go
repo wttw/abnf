@@ -36,7 +36,7 @@ func String(key string, str string) Operator {
 	}
 }
 
-// StringCS defines a certain sequence of case insensitive character.
+// StringCI defines a certain sequence of case insensitive character.
 func StringCI(key string, str string) Operator {
 	return func(s []byte) Alternatives {
 		if len(str) > len(s) ||

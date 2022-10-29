@@ -43,10 +43,12 @@ func TestConcat(t *testing.T) {
 	t.Run("Complex", func(t *testing.T) {
 		rule := Concat(``,
 			a,
-			Repeat0Inf(`*( a / b )`, Alts(`a / b`,
-				a,
-				b,
-			)),
+			Repeat0Inf(`*( a / b )`,
+				Alts(`a / b`,
+					a,
+					b,
+				),
+			),
 			a,
 		)
 
@@ -55,12 +57,12 @@ func TestConcat(t *testing.T) {
 			t.Errorf("expected one node, got %d", len(nodes))
 		}
 
-		if nodes := rule([]byte("aaa")); len(nodes) != 2 {
+		if nodes := rule([]byte("aaa")); len(nodes) != 1 {
 			// "aa" and "aaa"
 			t.Errorf("expected two nodes, got %d", len(nodes))
 		}
 
-		if nodes := rule([]byte("aaba")); len(nodes) != 2 {
+		if nodes := rule([]byte("aaba")); len(nodes) != 1 {
 			// "aa" and "aaba"
 			t.Errorf("expected two nodes, got %d", len(nodes))
 		}
@@ -86,10 +88,11 @@ func TestAlts(t *testing.T) {
 	}
 
 	t.Run("Complex", func(t *testing.T) {
-		rule := Repeat0Inf(`*( a / b )`, Alts(`a / b`,
-			a,
-			b,
-		),
+		rule := Repeat0Inf(`*( a / b )`,
+			Alts(`a / b`,
+				a,
+				b,
+			),
 		)
 
 		if nodes := rule([]byte("aa")); len(nodes) != 3 {
@@ -105,6 +108,29 @@ func TestAlts(t *testing.T) {
 		if nodes := rule([]byte("aaba")); len(nodes) != 5 {
 			// "", "a", "aa", "aab" and "aaba"
 			t.Errorf("expected five nodes, got %d", len(nodes))
+		}
+	})
+
+	t.Run("Complex 2", func(t *testing.T) {
+		rule := Concat("(*a / *b) a",
+			Alts("*a / *b",
+				Repeat0Inf("*a", a),
+				Repeat0Inf("*b", b),
+			),
+			a,
+		)
+
+		if nodes := rule([]byte("aa")); len(nodes) != 1 {
+			t.Errorf("expected one node, got %d", len(nodes))
+		} else {
+			if len(nodes[0].Children) != 2 {
+				t.Errorf("expected two subnodes, %d", len(nodes[0].Children))
+			}
+			for _, n := range nodes[0].Children {
+				if len(n.Value) != 1 {
+					t.Errorf("expected length 1, got %d", len(n.Value))
+				}
+			}
 		}
 	})
 }

@@ -24,6 +24,13 @@ func Concat(key string, rules ...Operator) Operator {
 					nodes = append(nodes, n)
 				}
 			}
+			if len(nodes) > 0 {
+				nodes[0] = nodes.Best()
+				for i := 1; i < len(nodes[1:]); i++ {
+					nodes[i] = nil
+				}
+				nodes = nodes[:1]
+			}
 			return nodes
 		}
 		return concat(0, rules)
