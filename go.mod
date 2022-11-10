@@ -1,4 +1,4 @@
-module github.com/elimity-com/abnf
+module github.com/funwithbots/go-abnf
 
 go 1.15
 
