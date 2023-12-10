@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/di-wu/regen"
-	"github.com/elimity-com/abnf/operators"
+	"github.com/wttw/abnf/operators"
 )
 
 func TestDefinition(t *testing.T) {

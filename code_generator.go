@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-const operatorsPkg = "github.com/elimity-com/abnf/operators"
+const operatorsPkg = "github.com/wttw/abnf/operators"
 
 type CodeGenerator struct {
 	writer io.Writer
@@ -19,7 +19,7 @@ type CodeGenerator struct {
 	// RawABNF syntax to parse
 	RawABNF []byte
 	// ExternalABNF reference to abnf syntax
-	// e.g. ALPHA from github.com/elimity-com/abnf/core
+	// e.g. ALPHA from github.com/wttw/abnf/core
 	ExternalABNF map[string]ExternalABNF
 
 	isOperator bool
@@ -71,7 +71,7 @@ func (g *CodeGenerator) in(f func()) {
 type ExternalABNF struct {
 	// IsOperator: operator / alternatives
 	IsOperator bool
-	// PackagePath: e.g. github.com/elimity-com/abnf/core
+	// PackagePath: e.g. github.com/wttw/abnf/core
 	PackagePath string
 	// PackageName: e.g. core
 	PackageName string

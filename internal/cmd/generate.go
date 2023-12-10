@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"bytes"
-	"github.com/elimity-com/abnf"
-	"github.com/elimity-com/abnf/internal/config"
+	"github.com/wttw/abnf"
+	"github.com/wttw/abnf/internal/config"
 	"io"
 	"log"
 	"os"
@@ -34,7 +34,7 @@ func Generate(dir, filename string, stderr io.Writer) error {
 		for _, external := range configuration.External {
 			for _, rule := range external.Rules {
 				g.ExternalABNF[rule] = abnf.ExternalABNF{
-					IsOperator: external.Operators,
+					IsOperator:  external.Operators,
 					PackageName: external.Name,
 					PackagePath: external.Path,
 				}

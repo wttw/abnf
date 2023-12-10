@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/elimity-com/abnf/internal/cmd"
+	"github.com/wttw/abnf/internal/cmd"
 	"os"
 )
 

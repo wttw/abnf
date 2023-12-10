@@ -1,7 +1,7 @@
 package abnf
 
 import (
-	"github.com/elimity-com/abnf/operators"
+	"github.com/wttw/abnf/operators"
 	"io/ioutil"
 	"testing"
 )

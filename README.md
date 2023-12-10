@@ -1,4 +1,7 @@
 # Augmented BNF for Syntax Specifications: ABNF
+
+*Local fork.* Do not use, check upstream instead.
+
 Internet technical specifications often need to define a formal syntax and are free to employ whatever notation their 
 authors deem useful. Over the years, a modified version of Backus-Naur Form (BNF), called Augmented BNF (ABNF), has been
 popular among many Internet specifications. It balances compactness and simplicity with reasonable representational power.
@@ -24,7 +27,7 @@ where created by the generator.
 ```go
 corePkg := externalABNF{
 	operator:    true,
-	packageName: "github.com/elimity-com/abnf/core",
+	packageName: "github.com/wttw/abnf/core",
 }
 g := Generator{
 	PackageName:  "definition",
@@ -90,7 +93,7 @@ CRLF = CR LF / LF
 It is possible to specify a configuration using a YAML file to automate the code generation. To install the command:
 
 ```abnf
-go install github.com/elimity-com/abnf/cmd/abnf@latest
+go install github.com/wttw/abnf/cmd/abnf@latest
 abnf generate
 ```
 

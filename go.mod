@@ -1,4 +1,4 @@
-module github.com/funwithbots/go-abnf
+module github.com/wttw/abnf
 
 go 1.15
 

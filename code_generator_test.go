@@ -63,7 +63,7 @@ func TestCodeGenerator_definition(t *testing.T) {
 	corePkg := ExternalABNF{
 		IsOperator:  true,
 		PackageName: "core",
-		PackagePath: "github.com/elimity-com/abnf/core",
+		PackagePath: "github.com/wttw/abnf/core",
 	}
 	g := CodeGenerator{
 		PackageName: "definition",

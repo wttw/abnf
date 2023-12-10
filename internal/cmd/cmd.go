@@ -3,9 +3,9 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"github.com/elimity-com/abnf/internal/config"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
+	"github.com/wttw/abnf/internal/config"
 	"gopkg.in/yaml.v2"
 	"io"
 	"os"

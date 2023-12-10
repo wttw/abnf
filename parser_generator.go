@@ -3,15 +3,15 @@ package abnf
 import (
 	"sync"
 
-	"github.com/elimity-com/abnf/encoding"
-	"github.com/elimity-com/abnf/operators"
+	"github.com/wttw/abnf/encoding"
+	"github.com/wttw/abnf/operators"
 )
 
 type ParserGenerator struct {
 	// RawABNF syntax to parse
 	RawABNF []byte
 	// ExternalABNF reference to abnf syntax
-	// e.g. ALPHA from github.com/elimity-com/abnf/core
+	// e.g. ALPHA from github.com/wttw/abnf/core
 	ExternalABNF map[string]operators.Operator
 
 	sync.WaitGroup

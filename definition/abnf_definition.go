@@ -3,9 +3,9 @@
 package definition
 
 import (
-	"github.com/elimity-com/abnf/core"
+	"github.com/wttw/abnf/core"
 
-	"github.com/elimity-com/abnf/operators"
+	"github.com/wttw/abnf/operators"
 )
 
 // alternation = concatenation *(*c-wsp "/" *c-wsp concatenation)

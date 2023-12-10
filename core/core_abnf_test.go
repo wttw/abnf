@@ -1,8 +1,8 @@
 package core
 
 import (
-	"github.com/elimity-com/abnf/encoding"
-	"github.com/elimity-com/abnf/operators"
+	"github.com/wttw/abnf/encoding"
+	"github.com/wttw/abnf/operators"
 	"testing"
 
 	"github.com/di-wu/regen"

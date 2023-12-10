@@ -2,11 +2,12 @@ package abnf
 
 import (
 	"fmt"
+	"log"
 	"reflect"
 	"strconv"
 
-	"github.com/elimity-com/abnf/definition"
-	"github.com/elimity-com/abnf/operators"
+	"github.com/wttw/abnf/definition"
+	"github.com/wttw/abnf/operators"
 )
 
 // NewRuleSet converts given raw data to a set of ABNF rules.
@@ -273,10 +274,12 @@ func parseElement(rawNode *operators.Node) Operator {
 	case "num-val":
 		return parseNumericValue(rawNode)
 	case "prose-val":
-		panic("not implemented")
+		log.Fatalf("prose-val not implemented: %s\n %#v", string(rawNode.Value), rawNode)
+		//panic("not implemented")
 	default:
 		return nil
 	}
+	return nil
 }
 
 // RuleNameOperator represents a rule name node of a rule.

@@ -2,7 +2,7 @@
 
 package core
 
-import "github.com/elimity-com/abnf/operators"
+import "github.com/wttw/abnf/operators"
 
 // ALPHA = %x41-5A / %x61-7A
 func ALPHA() operators.Operator {
